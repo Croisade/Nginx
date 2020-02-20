@@ -1,0 +1,13 @@
+upstream balance {
+        server 10.0.0.208:80;
+        server 10.0.0.165:80;
+}
+
+server {
+        listen 80;
+        server_name 10.0.0.174;
+
+        location /myproxy {
+                proxy_pass http://balance/thisismyapp/myendpoint;
+        }
+}
